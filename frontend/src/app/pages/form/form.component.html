@@ -1,0 +1,29 @@
+
+
+<div class="min-h-screen bg-gradient-to-br from-gray-100 to-gray-300 py-10 px-5">
+  
+  <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-8"
+  >   <h2 class="text-4xl font-bold text-gray-800 mb-4 text-center">{{posts.title}}</h2>
+    <img [src]="dumypost.image" alt="Blog Image" class="w-full h-80 object-cover rounded-lg mb-6">
+     <h1 class="text-4xl font-bold text-gray-800 mb-4">{{posts.id}}</h1>
+    
+    <h2 class="text-4xl font-bold text-gray-800 mb-4 ">{{posts.title}}</h2>
+      <p class="text-gray-600 text-sm mb-6 font-bold">Author:{{posts.author?.username}}</p>
+    <p class="text-gray-600 text-sm mb-6"> Date: {{posts.createdAt | date :'medium'}}</p>
+    
+    <div class="text-gray-700 leading-relaxed text-lg space-y-4">
+      <p>
+       {{posts.content}}
+      </p>
+      
+      
+    </div>
+
+    <div class="mt-8">
+      <button routerLink="/blogshow" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600">Back to Posts</button>
+    </div>
+  </div>
+
+</div>
+
+

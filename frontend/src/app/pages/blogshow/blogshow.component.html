@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+
+<div class="min-h-screen bg-gradient-to-br from-gray-100 to-gray-300 py-14 px-6">
+  <div class="text-center mb-12">
+    <h1 class="text-5xl font-extrabold text-gray-800">Explore Inspiring Blogs</h1>
+    <p class="text-lg text-gray-600 mt-2">Read thoughts, stories, and insights from different authors.</p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+
+    <!-- Blog Card -->
+    @for (post of posts; track post._id) {
+    <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden transform hover:scale-105 transition duration-300">
+      <img [src]="dumypost.image" alt="Blog Image" class="w-full h-56 object-cover">
+      <div class="p-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-1">{{ post.title }}</h2>
+        <p class="text-gray-500 text-sm mb-2">by {{ post.author?.username }} | {{ post.createdAt | date:'mediumDate' }}</p>
+        <p class="text-gray-700 mb-4">{{ post.content }}...</p>
+        <button [routerLink]="['/form', post._id]" class="text-purple-600 hover:underline font-medium">
+            Read More
+          </button>
+      </div>
+    </div>
+    }
+
+  </div>
+</div>

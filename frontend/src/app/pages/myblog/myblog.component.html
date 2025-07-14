@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+
+<!-- Main Container -->
+<div class="min-h-screen bg-gradient-to-br from-blue-50 to-purple-100 py-12 px-6">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Page Heading -->
+    <h1 class="text-5xl font-bold text-center text-gray-800 mb-12">📝 My Blog Posts</h1>
+
+    <!-- Posts Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+     @for (post of posts; track post._id) {
+      <!-- Single Card -->
+      <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300">
+        <img [src]="dumypost.image" alt="Blog Image" class="rounded-t-2xl w-full h-60 object-cover" />
+
+        <div class="p-6">
+          <h2 class="text-2xl font-bold text-gray-800 mb-2">{{post.title}}</h2>
+          <p class="text-sm text-gray-500 mb-2">Author:{{post.author?.username}}</p>
+          <p class="text-sm text-gray-500 mb-2">Created:{{post.createdAt| date:'medium'}} </p>
+          <p class="text-gray-700 mb-4">{{post.content}}</p>
+
+          <div class="flex justify-between space-x-3">
+            <button [routerLink]="['/edit',post._id]"
+              class="w-full cursor-pointer bg-green-600 hover:bg-green-800 text-white px-4 py-2 rounded-lg font-semibold transition duration-300">
+              ✏️ Edit
+            </button>
+            <button  (click)="delete(post._id)"
+              class="w-full cursor-pointer bg-red-500 hover:bg-red-800 text-white px-4 py-2 rounded-lg font-semibold transition duration-300">
+              🗑️ Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+     
+
+    </div>
+
+    <!-- No Posts Message -->
+    <div *ngIf="posts.length === 0" class="text-center text-xl text-gray-600 mt-20">
+      You haven’t created any posts yet.
+    </div>
+  </div>
+</div>
